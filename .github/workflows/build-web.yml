@@ -1,0 +1,68 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Build and deploy the Web version using Expo Web export
+# ─────────────────────────────────────────────────────────────────────────────
+name: Build – Web
+
+on:
+  push:
+    tags: ["v*"]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  WORKING_DIR: mobile
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure API URL
+        run: |
+          echo "EXPO_PUBLIC_API_URL=${{ vars.API_URL || 'https://api.kjbllm.app' }}" >> $GITHUB_ENV
+
+      - name: Export static web build
+        run: npx expo export --platform web
+
+      - name: Upload artifact (Pages)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: mobile/dist
+
+      - name: Upload artifact (general)
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: mobile/dist
+
+  deploy-pages:
+    needs: web
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
