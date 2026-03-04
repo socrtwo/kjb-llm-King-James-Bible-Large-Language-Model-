@@ -133,16 +133,47 @@ Settings in `kjb_llm/config.py`, overridable via environment variables:
 | `KJB_API_HOST` | `0.0.0.0` | API bind address |
 | `KJB_API_PORT` | `8000` | API port |
 
+## Distribution builds (GitHub Actions)
+
+Every platform has a dedicated GitHub Actions workflow under `.github/workflows/`:
+
+| Workflow | File | Trigger | Output |
+|----------|------|---------|--------|
+| **CI Tests** | `ci-tests.yml` | Push / PR to `main` | pytest results |
+| **Android** | `build-android.yml` | Tag `v*` or manual | `.apk` / `.aab` |
+| **iOS** | `build-ios.yml` | Tag `v*` or manual | `.ipa` |
+| **Web** | `build-web.yml` | Push to `main` or tag | GitHub Pages |
+| **Desktop** | `build-desktop.yml` | Tag `v*` or manual | `.AppImage`, `.deb`, `.dmg`, `.exe` |
+| **Backend** | `build-backend.yml` | Push to `main` or tag | Docker image (GHCR) |
+
+### Required secrets & variables
+
+| Secret / Variable | Where | Purpose |
+|---|---|---|
+| `EXPO_TOKEN` | Secret | Expo / EAS authentication |
+| `API_URL` | Variable | Production API base URL (default `https://api.kjbllm.app`) |
+| `GITHUB_TOKEN` | Automatic | GHCR push, release asset upload |
+
+### Creating a release
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+This triggers all build workflows simultaneously. Artifacts are attached to the GitHub Release automatically.
+
 ## Distribution roadmap
 
 | Platform | Framework | Status |
 |----------|-----------|--------|
-| Android | React Native (Expo) | **Phase 1 -- in progress** |
-| iOS | React Native (Expo) | Phase 2 |
-| Web | React Native (Expo Web) | Phase 3 |
-| Windows | Electron or Expo Desktop | Phase 4 |
-| macOS | Electron or Expo Desktop | Phase 4 |
-| Linux | Electron or Expo Desktop | Phase 4 |
+| Android | React Native (Expo / EAS) | **Active -- CI/CD ready** |
+| iOS | React Native (Expo / EAS) | **Active -- CI/CD ready** |
+| Web | Expo Web + GitHub Pages | **Active -- CI/CD ready** |
+| Windows | Electron + electron-builder | **Active -- CI/CD ready** |
+| macOS | Electron + electron-builder | **Active -- CI/CD ready** |
+| Linux | Electron + electron-builder | **Active -- CI/CD ready** |
+| Backend | Docker (GHCR) | **Active -- CI/CD ready** |
 
 ## Example
 

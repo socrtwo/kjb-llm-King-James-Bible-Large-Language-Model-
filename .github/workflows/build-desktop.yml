@@ -1,0 +1,88 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Build Desktop apps (Windows, macOS, Linux) using Electron
+# ─────────────────────────────────────────────────────────────────────────────
+name: Build – Desktop
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux
+          - os: macos-latest
+            platform: mac
+          - os: windows-latest
+            platform: win
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # ── Build the Expo Web bundle first ──────────────────────────────────
+      - name: Install mobile dependencies
+        working-directory: mobile
+        run: npm ci
+
+      - name: Export Expo web bundle
+        working-directory: mobile
+        run: npx expo export --platform web
+        env:
+          EXPO_PUBLIC_API_URL: ${{ vars.API_URL || 'https://api.kjbllm.app' }}
+
+      - name: Copy web bundle into Electron app
+        shell: bash
+        run: |
+          mkdir -p desktop/renderer
+          cp -r mobile/dist/* desktop/renderer/
+
+      # ── Build Electron app ───────────────────────────────────────────────
+      - name: Install desktop dependencies
+        working-directory: desktop
+        run: npm ci
+
+      - name: Build Electron app
+        working-directory: desktop
+        run: npx electron-builder --${{ matrix.platform }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.platform }}
+          path: |
+            desktop/dist-electron/*.exe
+            desktop/dist-electron/*.msi
+            desktop/dist-electron/*.dmg
+            desktop/dist-electron/*.zip
+            desktop/dist-electron/*.AppImage
+            desktop/dist-electron/*.deb
+            desktop/dist-electron/*.rpm
+
+      - name: Attach to GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            desktop/dist-electron/*.exe
+            desktop/dist-electron/*.msi
+            desktop/dist-electron/*.dmg
+            desktop/dist-electron/*.zip
+            desktop/dist-electron/*.AppImage
+            desktop/dist-electron/*.deb

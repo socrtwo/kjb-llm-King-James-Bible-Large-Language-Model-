@@ -1,0 +1,12 @@
+.git
+.venv
+venv
+data
+mobile/node_modules
+mobile/.expo
+desktop/node_modules
+desktop/dist-electron
+__pycache__
+*.egg-info
+.pytest_cache
+.mypy_cache
