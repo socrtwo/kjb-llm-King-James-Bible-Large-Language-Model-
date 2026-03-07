@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Virginia Bottle Bill Organization | Make it Happen!</title>
+  <meta name="description" content="Passing a Bottle Bill in Virginia would greatly reduce beverage container litter, ensuring the recycling and reuse of containers while also reducing carbon emissions and the negative impact on the environment.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <span class="top-bar-text">Virginia Bottle Bill Organization &mdash; A 501(c)(3) Nonprofit</span>
+      <span class="top-bar-contact">
+        <a href="mailto:VAbottlebill@gmail.com">VAbottlebill@gmail.com</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">&#9851;</span>
+        <span class="logo-text">VA Bottle Bill</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-menu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#what-is">What Is a Bottle Bill?</a>
+        <a href="#why">Why a Bottle Bill</a>
+        <a href="#virginia-needs">Why Virginia Needs One</a>
+        <a href="#proposed">Proposed Legislation</a>
+        <a href="#myths">Myths, Facts &amp; FAQs</a>
+        <a href="#supporters">Supporters</a>
+        <a href="#economic">Economic Impact</a>
+        <a href="#about">About Us</a>
+        <a href="#petition" class="nav-cta">Sign the Petition</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>Make it Happen!</h1>
+      <p class="hero-subtitle">Passing a Bottle Bill in Virginia would greatly reduce beverage container litter, ensuring the recycling and reuse of containers while also reducing carbon emissions and the negative impact on the environment.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">7%</span>
+          <span class="stat-label">VA Recycling Rate</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">70%</span>
+          <span class="stat-label">Roadside Litter is Beverage Containers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">80%</span>
+          <span class="stat-label">Litter Reduction in Bottle Bill States</span>
+        </div>
+      </div>
+      <a href="#petition" class="btn btn-primary btn-large">Sign the Petition</a>
+    </div>
+  </section>
+
+  <!-- Virginia Map Section -->
+  <section id="virginia-map" class="virginia-map-section">
+    <div class="container">
+      <div class="map-layout">
+        <div class="map-container">
+          <svg viewBox="0 0 800 400" class="virginia-svg" aria-label="Map of Virginia">
+            <!-- Virginia state outline (simplified) -->
+            <path class="va-outline" d="M50,200 L80,180 L120,170 L160,155 L200,140 L240,130 L280,120 L320,115 L360,110 L400,108 L440,112 L480,120 L500,125 L520,130 L540,140 L560,148 L580,155 L600,158 L620,155 L640,148 L660,142 L680,138 L700,140 L720,148 L740,160 L750,170 L755,185 L748,200 L735,210 L720,218 L700,225 L680,228 L660,230 L640,228 L620,225 L600,222 L580,225 L560,230 L540,240 L520,248 L500,255 L480,260 L460,262 L440,258 L420,250 L400,245 L380,248 L360,255 L340,260 L320,262 L300,258 L280,250 L260,245 L240,248 L220,255 L200,262 L180,268 L160,270 L140,265 L120,258 L100,250 L80,245 L60,235 L50,220 Z" />
+            <!-- Litter dots scattered across Virginia -->
+            <circle class="litter-dot" cx="200" cy="200" r="4" />
+            <circle class="litter-dot" cx="250" cy="190" r="3" />
+            <circle class="litter-dot" cx="300" cy="195" r="5" />
+            <circle class="litter-dot" cx="350" cy="185" r="3" />
+            <circle class="litter-dot" cx="400" cy="180" r="4" />
+            <circle class="litter-dot" cx="450" cy="190" r="3" />
+            <circle class="litter-dot" cx="500" cy="195" r="5" />
+            <circle class="litter-dot" cx="550" cy="190" r="4" />
+            <circle class="litter-dot" cx="600" cy="195" r="3" />
+            <circle class="litter-dot" cx="650" cy="188" r="4" />
+            <circle class="litter-dot" cx="700" cy="185" r="3" />
+            <circle class="litter-dot" cx="180" cy="230" r="3" />
+            <circle class="litter-dot" cx="320" cy="220" r="4" />
+            <circle class="litter-dot" cx="420" cy="215" r="3" />
+            <circle class="litter-dot" cx="530" cy="220" r="4" />
+            <circle class="litter-dot" cx="160" cy="210" r="3" />
+            <circle class="litter-dot" cx="480" cy="210" r="4" />
+            <!-- Star markers for key cities -->
+            <g class="city-marker">
+              <polygon points="680,160 683,168 692,168 685,173 688,181 680,176 672,181 675,173 668,168 677,168" />
+              <text x="680" y="152" text-anchor="middle" class="city-label">Norfolk</text>
+            </g>
+            <g class="city-marker">
+              <polygon points="620,170 623,178 632,178 625,183 628,191 620,186 612,191 615,183 608,178 617,178" />
+              <text x="620" y="162" text-anchor="middle" class="city-label">Richmond</text>
+            </g>
+            <g class="city-marker">
+              <polygon points="540,155 543,163 552,163 545,168 548,176 540,171 532,176 535,168 528,163 537,163" />
+              <text x="540" y="147" text-anchor="middle" class="city-label">Charlottesville</text>
+            </g>
+            <g class="city-marker">
+              <polygon points="700,148 703,156 712,156 705,161 708,169 700,164 692,169 695,161 688,156 697,156" />
+              <text x="700" y="140" text-anchor="middle" class="city-label">VA Beach</text>
+            </g>
+            <g class="city-marker">
+              <polygon points="580,140 583,148 592,148 585,153 588,161 580,156 572,161 575,153 568,148 577,148" />
+              <text x="600" y="134" text-anchor="middle" class="city-label">NoVA / DC</text>
+            </g>
+            <!-- Chesapeake Bay area -->
+            <path class="chesapeake" d="M710,155 Q720,170 730,190 Q735,210 730,225 Q725,235 718,240" fill="none" stroke-width="3" />
+            <text x="742" y="200" class="bay-label">Chesapeake Bay</text>
+          </svg>
+        </div>
+        <div class="map-text">
+          <h2>Virginia&rsquo;s Litter Crisis</h2>
+          <p>Beverage containers make up <strong>70% of roadside litter</strong> in Virginia. Because Virginia is located along the Chesapeake Bay, much of this waste ends up in the ocean.</p>
+          <p>A Clark County litter study over 7 years found beverage containers made up <strong>69% of the litter</strong> they picked up. A 3-year tally of litter picked up in Middleburg, VA found beverage containers also accounted for <strong>70% of roadside litter</strong>.</p>
+          <p>Right now, Virginia recycles only <strong>8% of its PET beverage containers</strong>, compared to Maine&rsquo;s 75% or Oregon&rsquo;s 71% &mdash; both states with bottle bills.</p>
+          <p>In the 2020 Annual Solid Waste Report published by the Virginia DEQ, it was unveiled that only slightly over <strong>7% of waste</strong> processed in permitted facilities was able to successfully be recycled &mdash; equivalent to over 1,415,000 tons of solid waste out of the 16,745,894 tons Virginia produced.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Is a Bottle Bill? -->
+  <section id="what-is" class="content-section">
+    <div class="container">
+      <h2>What Is a Bottle Bill?</h2>
+      <div class="two-column">
+        <div class="col">
+          <p>A &ldquo;Bottle Bill&rdquo; is slang for &ldquo;a beverage container deposit and redemption system,&rdquo; or &ldquo;deposit system.&rdquo; Calling it a &ldquo;Bottle Bill&rdquo; has a nicer ring to it, but our friends at the Can Manufacturer&rsquo;s Institute feel ignored.</p>
+          <p>When you buy a beverage at a store, you pay the store a deposit on each bottle or can. When you return your empty can/bottle to the store or special redemption center, you get the deposit back. There are over 50 Bottle Bills in the world, including 10 states in the USA, with 50 years of experience in what works and what doesn&rsquo;t.</p>
+        </div>
+        <div class="col">
+          <h3>How It Works</h3>
+          <div class="how-it-works">
+            <div class="step">
+              <span class="step-num">1</span>
+              <p>You buy a beverage and pay a small deposit (e.g., 10&cent;) on each bottle or can.</p>
+            </div>
+            <div class="step">
+              <span class="step-num">2</span>
+              <p>You return your empty container to a store, reverse vending machine, or redemption center.</p>
+            </div>
+            <div class="step">
+              <span class="step-num">3</span>
+              <p>You get your deposit back. The container is recycled. Everybody wins.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <p><strong>Reverse Vending Machines:</strong> All stores will have &ldquo;reverse vending machines&rdquo; to take back containers. Most states also have &ldquo;Deposit Redemption Centers&rdquo; where larger quantities of containers can be returned. It is a quick drop off &mdash; you do not stand in line and wait for your money. The employees process your redemption and credit your account. This is fast, easy, and convenient.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why a Bottle Bill -->
+  <section id="why" class="content-section alt-bg">
+    <div class="container">
+      <h2>Why a Bottle Bill?</h2>
+      <p>Deposits place the cost of managing post-consumer beverage containers where it really belongs &mdash; on those who manufacture, sell, and buy them. The deposit system shifts those costs to producers and consumers of the containers. This is known as <strong>extended producer responsibility (EPR)</strong>.</p>
+      <p>Bottlers used to keep their bottles out of the trash and off the sides of streets when they had refillable bottles. They purposely pushed a &ldquo;nonreturnable&rdquo; bottle and left the cost of disposal and litter cleanup to people and governments.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">&#127759;</div>
+          <h3>Reduces Litter</h3>
+          <p>The deposit refund rewards every person that picks up litter. Hundreds if not thousands of people start to pick up litter as a result. Overall litter is reduced, not just beverage containers. States have reported a reduction in total litter anywhere from 30&ndash;50% and a reduction of beverage container litter ranging from 70&ndash;83%.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#9851;</div>
+          <h3>Triples Recycling</h3>
+          <p>A bottle bill combined with curbside recycling triples the overall amount of beverage containers recycled. While the U.S. national recycling rate stagnated at around 34%, high-performing deposit return systems routinely collect 90% or more of containers for recycling.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#127981;</div>
+          <h3>Reduces Landfill Waste</h3>
+          <p>Reduces the trash in landfills and reduces air pollution from incinerators, which lowers Greenhouse Gas Emissions. It is always more efficient to &ldquo;mine&rdquo; materials out of the waste stream than to find virgin material in the ground and create new containers.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128176;</div>
+          <h3>Supports Charities</h3>
+          <p>Some states let charities sign up, and people&rsquo;s refunds are donated directly to the charity of their choice. Charities can also sponsor drives. Millions of dollars have been raised this way.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#128188;</div>
+          <h3>Creates Jobs</h3>
+          <p>Bottle bills create jobs in collection, sorting, processing, and recycling operations across the state, stimulating local economies.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">&#127754;</div>
+          <h3>Protects Waterways</h3>
+          <p>Because Virginia is located along the Chesapeake Bay, much of beverage container waste ends up in the ocean. A bottle bill helps keep containers out of our rivers, streams, and the Bay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Does Virginia Need a Bottle Bill? -->
+  <section id="virginia-needs" class="content-section">
+    <div class="container">
+      <h2>Why Does Virginia Need a Bottle Bill?</h2>
+      <div class="two-column">
+        <div class="col">
+          <ul class="fact-list">
+            <li>Virginia currently recycles an estimated <strong>23%</strong> of its single-use beverage containers.</li>
+            <li>Beverage containers make up <strong>70%</strong> of roadside litter in Virginia.</li>
+            <li>In states with bottle bills, beverage container litter has been reduced by an average of <strong>80%</strong>.</li>
+            <li>Northern Virginia&rsquo;s curbside recycling rates are extremely low at <strong>21%</strong>, reflecting the lack of incentive to recycle.</li>
+            <li>The Northern Virginia Region Solid Waste organization report of 2018 showed glass as <strong>0%</strong> of all recycled material &mdash; it all went to the landfill or incinerators.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="fact-list">
+            <li>In the 10 states with bottle bills, total beverage container recycling averaged <strong>71%</strong>.</li>
+            <li>Vermont and Alberta, Canada recycle over <strong>90%</strong>.</li>
+            <li>Virginia&rsquo;s PET bottle recycling rate is just <strong>8%</strong>, compared to Maine&rsquo;s 75% or Oregon&rsquo;s 71%.</li>
+            <li>In states with refund programs, drink containers make up about <strong>6.29%</strong> of litter, while in states without these programs, the number is about <strong>14.89%</strong>.</li>
+            <li>In Virginia, <strong>16.78%</strong> of litter in 2022 came from beverage bottles and cans.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comparison-bar">
+        <h3>Recycling Rate Comparison</h3>
+        <div class="bar-chart">
+          <div class="bar-item">
+            <div class="bar-label">Virginia</div>
+            <div class="bar-track"><div class="bar-fill va-bar" style="width:8%"></div></div>
+            <div class="bar-value">8%</div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label">National Avg.</div>
+            <div class="bar-track"><div class="bar-fill national-bar" style="width:34%"></div></div>
+            <div class="bar-value">34%</div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label">Bottle Bill States</div>
+            <div class="bar-track"><div class="bar-fill bb-bar" style="width:71%"></div></div>
+            <div class="bar-value">71%</div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-label">Oregon</div>
+            <div class="bar-track"><div class="bar-fill or-bar" style="width:90%"></div></div>
+            <div class="bar-value">90.5%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proposed Legislation -->
+  <section id="proposed" class="content-section alt-bg">
+    <div class="container">
+      <h2>Proposed Legislation</h2>
+      <p>Ten states currently have Bottle Bills, and none of them are the same. The most successful bills share some things in common:</p>
+      <div class="legislation-features">
+        <div class="leg-feature">
+          <h3>10&cent; Deposit on All Beverages</h3>
+          <p>A 10 cent or higher deposit on all beverage containers including beer, wine, liquor (including small &ldquo;nips&rdquo;), soda, water (still and carbonated), fruit and vegetable juices, hard ciders, teas, sports drinks, coffee drinks, wellness and functional drinks, foil pouches, cartons (Tetra Paks), and milk.</p>
+        </div>
+        <div class="leg-feature">
+          <h3>Easy Returns</h3>
+          <p>Easy returns at the point of sale and larger redemption centers for bulk returns, using Reverse Vending Machines (e.g., TOMRA) at stores and redemption centers. Oregon and Maine have nice return systems Virginia can duplicate.</p>
+        </div>
+        <div class="leg-feature">
+          <h3>Distributor-Run System</h3>
+          <p>System run by the distributors, not a new government agency.</p>
+        </div>
+        <div class="leg-feature">
+          <h3>90% Return Rate Target</h3>
+          <p>Return rate of 90%, with penalties for lower return rates.</p>
+        </div>
+        <div class="leg-feature">
+          <h3>Self-Funding</h3>
+          <p>Funded by the uncollected deposits (estimated at <strong>$114 Million</strong> at 80% return) and not by a handling fee.</p>
+        </div>
+      </div>
+      <div class="info-box oregon-box">
+        <h3>Oregon&rsquo;s Model: BottleDrop</h3>
+        <p>Oregon has a nice system Virginia can duplicate: <strong>BottleDrop</strong>, Oregon&rsquo;s Bottle &amp; Can Return Program, instead of reinventing the wheel. Oregon&rsquo;s Bottle Bill was introduced in 1971 as the very first bottle bill in the U.S. The refund value increased to 10 cents in 2017. According to the Oregon Beverage Recycling Cooperative (OBRC), Oregon achieved a <strong>90.5% redemption rate</strong> in 2023. OBRC, a private cooperative owned by retailers and beverage distributors, administers the collection and transportation of returned containers and keeps all the unclaimed deposits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Myths, Facts & FAQs -->
+  <section id="myths" class="content-section">
+    <div class="container">
+      <h2>Myths, Facts &amp; FAQs</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>&ldquo;Bottle Bills financially burden consumers.&rdquo;</summary>
+          <p><strong>Fact:</strong> These programs cost consumers nothing. The deposit is fully refundable when consumers return the container.</p>
+        </details>
+        <details class="faq-item">
+          <summary>&ldquo;Deposits duplicate curbside recycling.&rdquo;</summary>
+          <p><strong>Fact:</strong> A bottle bill combined with curbside recycling actually <em>triples</em> the overall amount of beverage containers recycled. They complement, not duplicate, each other.</p>
+        </details>
+        <details class="faq-item">
+          <summary>&ldquo;Industry can handle this without government intervention.&rdquo;</summary>
+          <p><strong>Fact:</strong> Manufacturers always say they can handle this without government intervention but have always failed to achieve meaningful results. The lobby groups in New York state outspent the pro-bottle bill 100 to 1, fighting it over ten years, but they eventually lost, and New York now has one of the best recycling rates in the country.</p>
+        </details>
+        <details class="faq-item">
+          <summary>&ldquo;Bottle Bills will damage local businesses.&rdquo;</summary>
+          <p><strong>Fact:</strong> Although opponents contend that bottle bills reduce sales and eliminate jobs, the evidence from all 10 states with bottle bills shows that businesses adapt and thrive. In fact, bottle bills create new jobs in collection, sorting, and processing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>&ldquo;Bottle Bills are outdated.&rdquo;</summary>
+          <p><strong>Fact:</strong> Bottle Bills have been modernized over the decades. Oregon updated its program in 2017, raising the deposit to 10 cents and modernizing the return infrastructure. High-performing deposit return systems routinely collect 90% or more of containers for recycling.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do unclaimed deposits work?</summary>
+          <p>Bottle Bills generate millions of dollars in unclaimed deposits each year. These legally are property of the State, who decides how this money is spent. Most states fund the picking up of the bottles from collection points. In Virginia, uncollected deposits are estimated at <strong>$114 million</strong> at an 80% return rate.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I return bottles from another state?</summary>
+          <p>No. In order to earn a refund, you must have paid a deposit first. The deposit-refund system is based on the idea that a bottle is bought in the state, the deposit is paid, and then the deposit is returned to the purchaser when the container is returned. Containers bought in another state cannot be returned for a refund because no deposit was originally paid in that state. It is illegal to try to collect a refund on a bottle or can purchased in another state.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Associations, Companies and Supporters -->
+  <section id="supporters" class="content-section alt-bg">
+    <div class="container">
+      <h2>Associations, Companies and Supporters of a Bottle Bill</h2>
+      <p>Many concerned individuals, environmental groups, and manufacturers support the idea of a bottle bill. Organizations that promote bottle bill legislation can request to be listed on our site by emailing <a href="mailto:VAbottlebill@gmail.com">VAbottlebill@gmail.com</a>.</p>
+      <div class="supporters-grid">
+        <div class="supporter-card">
+          <h3>Glass Recycling Coalition</h3>
+          <p>An organization dedicated to growing end-market demand and building awareness of the benefits of glass recycling.</p>
+        </div>
+        <div class="supporter-card">
+          <h3>Association of Plastic Recyclers (APR)</h3>
+          <p>A global trade association representing the plastics recycling industry that supports bottle bills.</p>
+        </div>
+        <div class="supporter-card">
+          <h3>Ball Corporation</h3>
+          <p>A global container manufacturer, an American company headquartered in Broomfield, Colorado, best known for its production of glass jars, lids, and related products.</p>
+        </div>
+        <div class="supporter-card">
+          <h3>CLYNK</h3>
+          <p>A private company that manages some of the redemption sites in New York and Maine.</p>
+        </div>
+        <div class="supporter-card">
+          <h3>Conservation Law Foundation</h3>
+          <p>Launched the Zero Waste Project to address unsustainable waste management practices in New England.</p>
+        </div>
+        <div class="supporter-card">
+          <h3>Virginia Conservation Network</h3>
+          <p>A group of 150+ environmental groups in Virginia that has made passing a bottle bill part of their legislative agenda.</p>
+        </div>
+        <div class="supporter-card">
+          <h3>City of Alexandria, VA</h3>
+          <p>The government of the City of Alexandria, Virginia has added the passage of a bottle bill to their legislative agenda.</p>
+        </div>
+        <div class="supporter-card">
+          <h3>Coalition for High Performance Recycling</h3>
+          <p>A group of brands, environmental groups, and packaging suppliers including CMI, The Recycling Partnership, The Aluminum Association, Glass Packaging Institute, and several aluminum packaging companies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Economic Powerhouse of Recycling -->
+  <section id="economic" class="content-section">
+    <div class="container">
+      <h2>The Economic Powerhouse of Recycling</h2>
+      <div class="two-column">
+        <div class="col">
+          <p>In a recent study conducted by the Resource Recycling System, it was revealed that in 2020 Connecticut&rsquo;s residential recycling contributed to over <strong>$1,159 million</strong> in the state&rsquo;s economy. This sum consists of the jobs directly and indirectly implemented as a result of the recycling system.</p>
+          <p>In 2020, the bottle bill contributed to more than <strong>$160 million (14%)</strong> in the state&rsquo;s economy. If a bottle bill can produce $160 million in a small state like Connecticut, imagine what this would entail if all 50 states adopted them.</p>
+        </div>
+        <div class="col">
+          <p>Massachusetts expected increasing jobs by <strong>1,500</strong> when they revised their bottle law in 2012, and in the 2018 report by Industrial Economics Inc, they counted <strong>1,260 Full Time Equivalent jobs</strong> and a ripple effect of 1,700 jobs worth <strong>$24 million</strong> in wages and benefits.</p>
+          <p>A bottle bill that includes a return incentive and curbside recycling has been shown to reduce litter and on average ensures <strong>80% of bottles</strong> in circulation are recycled or reused.</p>
+        </div>
+      </div>
+      <div class="economic-highlight">
+        <div class="econ-stat">
+          <span class="econ-number">$114M</span>
+          <span class="econ-desc">Estimated uncollected deposits annually in Virginia at 80% return rate</span>
+        </div>
+        <div class="econ-stat">
+          <span class="econ-number">$1.15B</span>
+          <span class="econ-desc">Connecticut&rsquo;s recycling economic contribution (2020)</span>
+        </div>
+        <div class="econ-stat">
+          <span class="econ-number">1,700+</span>
+          <span class="econ-desc">Jobs created in Massachusetts from bottle bill</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about" class="content-section alt-bg">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>The Virginia Bottle Bill Organization was started by three dog walkers that were fed up with litter they found on their daily walks. Their concern for the environment, frustration over Virginia&rsquo;s lousy recycling rates, and the production of ever-increasing mountains of single-use plastic and trash, made them band together to fight for change.</p>
+      <p>Many concerned individuals, environmental groups, and manufacturers are fighting to reduce the use of plastic, and they all support the idea of a bottle bill. Still, none had taken the lead to make it happen &mdash; so this organization stepped in to fill the void.</p>
+      <p>The lobby groups in New York state outspent the pro-bottle bill 100 to 1, fighting it over ten years, but they eventually lost, and New York now has one of the best recycling rates in the country.</p>
+
+      <div class="founders">
+        <div class="founder-card">
+          <h3>Rick Galliher</h3>
+          <p>As a dog owner who walked local streets for 20 years picking up litter &mdash; mostly single-use beverage containers &mdash; Rick found that fellow dog walkers and neighbors were all frustrated about the litter, leading to the conclusion that an organized coalition is needed to prove popular support for a deposit bill.</p>
+        </div>
+        <div class="founder-card">
+          <h3>Co-Founder</h3>
+          <p>A retired Software Engineer/Veterinary Technician who loves hiking and dog walking in the area and is constantly dismayed at the amount of trash people leave behind.</p>
+        </div>
+        <div class="founder-card">
+          <h3>Jaimi McPeek</h3>
+          <p>An environmental scientist and conservation advocate with a diverse background spanning environmental policy, wildlife conservation, rehabilitation, and education. Jaimi currently serves as the Legislative Director for the Bottle Bill Association, advocating for sustainable waste management solutions.</p>
+        </div>
+      </div>
+
+      <p class="org-status"><strong>The Virginia Bottle Bill Organization is a 501(c)(3) entity.</strong></p>
+    </div>
+  </section>
+
+  <!-- Sign the Petition -->
+  <section id="petition" class="petition-section">
+    <div class="container">
+      <h2>Sign the Petition</h2>
+      <p>Let our elected leaders know that you support a Bottle Bill for Virginia! Fill out the form below to add your name to the petition.</p>
+      <div class="petition-layout">
+        <form class="petition-form" action="https://formspree.io/f/mojkqpwg" method="POST">
+          <div class="form-group">
+            <label for="name">Full Name <span class="required">*</span></label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="zip">Zip Code <span class="required">*</span></label>
+            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" maxlength="5" required>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city">
+          </div>
+          <div class="form-group">
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message" rows="4" placeholder="Why do you support a Bottle Bill for Virginia?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Petition</button>
+        </form>
+        <div class="petition-info">
+          <h3>Why Sign?</h3>
+          <p>Your signature helps demonstrate to Virginia&rsquo;s elected officials that there is strong public support for a beverage container deposit and redemption system.</p>
+          <p>Together, we can reduce litter, increase recycling, create jobs, and protect the Chesapeake Bay and Virginia&rsquo;s natural beauty.</p>
+          <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:VAbottlebill@gmail.com">VAbottlebill@gmail.com</a></p>
+            <p>Follow us on <a href="https://www.facebook.com/vabottlebill/" target="_blank" rel="noopener">Facebook</a> and <a href="https://www.instagram.com/vabottlebill/" target="_blank" rel="noopener">Instagram</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h4>VA Bottle Bill</h4>
+        <p>The Virginia Bottle Bill Organization is a 501(c)(3) entity working towards reducing litter, increasing recycling rates, and a sustainable future for Virginia by passing a Bottle Bill.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#what-is">What Is a Bottle Bill?</a></li>
+          <li><a href="#why">Why a Bottle Bill</a></li>
+          <li><a href="#proposed">Proposed Legislation</a></li>
+          <li><a href="#myths">Myths, Facts &amp; FAQs</a></li>
+          <li><a href="#petition">Sign the Petition</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:VAbottlebill@gmail.com">VAbottlebill@gmail.com</a></li>
+          <li><a href="https://www.facebook.com/vabottlebill/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/vabottlebill/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.votervoice.net/VABBO/Campaigns/77548/Respond" target="_blank" rel="noopener">Contact Your Legislators</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Virginia Bottle Bill Organization. All rights reserved.</p>
+        <p>Website created and maintained by <a href="https://www.bleevit.com" target="_blank" rel="noopener">Bleevit Interactive</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
