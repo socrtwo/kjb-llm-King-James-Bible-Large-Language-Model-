@@ -79,6 +79,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
+          fail_on_unmatched_files: false
           files: |
             desktop/dist-electron/*.exe
             desktop/dist-electron/*.msi
@@ -86,3 +87,4 @@ jobs:
             desktop/dist-electron/*.zip
             desktop/dist-electron/*.AppImage
             desktop/dist-electron/*.deb
+            desktop/dist-electron/*.rpm
