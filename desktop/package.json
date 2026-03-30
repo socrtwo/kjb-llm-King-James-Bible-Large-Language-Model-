@@ -16,6 +16,11 @@
   "build": {
     "appId": "com.kjbllm.desktop",
     "productName": "KJB-LLM",
+    "publish": {
+      "provider": "github",
+      "owner": "socrtwo",
+      "repo": "kjb-llm-King-James-Bible-Large-Language-Model-"
+    },
     "directories": {
       "output": "dist-electron"
     },
