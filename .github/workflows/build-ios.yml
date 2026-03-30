@@ -53,6 +53,11 @@ jobs:
         run: |
           echo "EXPO_PUBLIC_API_URL=${{ vars.API_URL || 'https://api.kjbllm.app' }}" >> $GITHUB_ENV
 
+      - name: Initialize EAS project
+        run: eas init --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
       - name: Build iOS (preview – simulator)
         if: ${{ github.event.inputs.profile != 'production' }}
         run: eas build --platform ios --profile preview --non-interactive --local
