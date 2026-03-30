@@ -39,6 +39,10 @@ jobs:
         working-directory: mobile
         run: npm ci
 
+      - name: Ensure web dependencies are installed
+        working-directory: mobile
+        run: npx expo install react-dom react-native-web @expo/metro-runtime --non-interactive
+
       - name: Export Expo web bundle
         working-directory: mobile
         run: npx expo export --platform web
