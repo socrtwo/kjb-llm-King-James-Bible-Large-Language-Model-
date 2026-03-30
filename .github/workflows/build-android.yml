@@ -58,6 +58,19 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
+      - name: Persist EAS projectId back to repo
+        if: startsWith(github.ref, 'refs/heads/')
+        run: |
+          if ! git diff --quiet app.json 2>/dev/null; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add app.json
+            git commit -m "chore: persist EAS projectId to app.json [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "app.json unchanged – projectId already set"
+          fi
+
       - name: Build Android APK (preview)
         if: ${{ github.event.inputs.profile != 'production' }}
         run: eas build --platform android --profile preview --non-interactive --local
