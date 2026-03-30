@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "KJB-LLM desktop app – Electron wrapper around the Expo Web build",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/socrtwo/kjb-llm-King-James-Bible-Large-Language-Model-.git"
+  },
   "scripts": {
     "start": "electron .",
     "build:linux": "electron-builder --linux",
