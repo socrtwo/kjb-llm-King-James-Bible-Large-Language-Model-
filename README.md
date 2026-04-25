@@ -1,5 +1,10 @@
 # KJB-LLM: King James Bible Language Model
 
+<!--PAGES_LINK_BANNER-->
+> 🌐 **Live page:** [https://socrtwo.github.io/kjb-llm-King-James-Bible-Large-Language-Model-/](https://socrtwo.github.io/kjb-llm-King-James-Bible-Large-Language-Model-/)  
+> 📦 **Releases:** [github.com/socrtwo/kjb-llm-King-James-Bible-Large-Language-Model-/releases](https://github.com/socrtwo/kjb-llm-King-James-Bible-Large-Language-Model-/releases)
+<!--/PAGES_LINK_BANNER-->
+
 A retrieval-augmented generation (RAG) system trained exclusively on the King James Bible (KJB), designed to answer contemporary language queries with scripturally grounded responses. Delivered as an **Android app** (with iOS, Windows, macOS, Linux, and Web planned).
 
 ## Architecture
