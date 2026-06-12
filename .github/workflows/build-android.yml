@@ -60,18 +60,14 @@ jobs:
       - name: Generate native Android project
         run: npx expo prebuild --platform android --no-install
 
-      - name: Force Kotlin 1.9.25 (Compose compiler 1.5.15 requirement)
-        # The prebuild template sometimes pins Kotlin 1.9.24, which the
-        # Compose compiler shipped with expo-modules-core rejects.
-        run: |
-          sed -i "s/'1\.9\.24'/'1.9.25'/" android/build.gradle
-          grep -n 'kotlinVersion' android/build.gradle
-
       - name: Build debug APK
+        # android.kotlinVersion must match the Kotlin Gradle Plugin that the
+        # react-native gradle plugin pins for RN 0.76 (1.9.24) so that
+        # expo-modules-core selects the matching Compose compiler (1.5.14).
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon -Pandroid.kotlinVersion=1.9.25
+          ./gradlew assembleDebug --no-daemon -Pandroid.kotlinVersion=1.9.24
           cp app/build/outputs/apk/debug/app-debug.apk ../KJB-LLM-android.apk
 
       - name: Upload artifact
