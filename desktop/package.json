@@ -1,7 +1,7 @@
 {
   "name": "kjb-llm-desktop",
   "version": "0.1.0",
-  "description": "KJB-LLM desktop app – Electron wrapper around the Expo Web build",
+  "description": "KJB-LLM desktop app \u2013 Electron wrapper around the Expo Web build",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -21,15 +21,24 @@
       "renderer/**/*"
     ],
     "linux": {
-      "target": ["AppImage", "deb"],
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "category": "Education"
     },
     "mac": {
-      "target": ["dmg", "zip"],
+      "target": [
+        "dmg",
+        "zip"
+      ],
       "category": "public.app-category.education"
     },
     "win": {
-      "target": ["nsis", "portable"]
+      "target": [
+        "nsis",
+        "portable"
+      ]
     },
     "nsis": {
       "oneClick": false,
@@ -42,5 +51,13 @@
   "devDependencies": {
     "electron": "^33.0.0",
     "electron-builder": "^25.0.0"
+  },
+  "author": {
+    "name": "Paul D Pruitt",
+    "email": "socrtwo@s2services.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/socrtwo/kjb-llm-King-James-Bible-Large-Language-Model-.git"
   }
 }
