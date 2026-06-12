@@ -45,23 +45,30 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Set up Expo
-        uses: expo/expo-github-action@v8
-        with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
-
       - name: Configure API URL
         run: |
           echo "EXPO_PUBLIC_API_URL=${{ vars.API_URL || 'https://api.kjbllm.app' }}" >> $GITHUB_ENV
 
-      - name: Build iOS (preview – simulator)
-        if: ${{ github.event.inputs.profile != 'production' }}
-        run: eas build --platform ios --profile preview --non-interactive --local
+      # eas build --local requires an EAS project id ('eas init'), which this
+      # project does not have. Prebuild + xcodebuild needs no Expo account;
+      # the unsigned simulator app is packaged as a tar.gz.
+      - name: Generate native iOS project
+        run: npx expo prebuild --platform ios --no-install
 
-      - name: Build iOS (production – device)
-        if: ${{ github.event.inputs.profile == 'production' }}
-        run: eas build --platform ios --profile production --non-interactive --local
+      - name: Install CocoaPods dependencies
+        run: |
+          cd ios
+          pod install
+
+      - name: Build simulator app (unsigned)
+        run: |
+          WS=$(ls -d ios/*.xcworkspace | head -1)
+          SCHEME=$(basename "$WS" .xcworkspace)
+          xcodebuild -workspace "$WS" -scheme "$SCHEME" -configuration Release \
+            -sdk iphonesimulator -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build
+          APP=$(ls -d build/Build/Products/Release-iphonesimulator/*.app | head -1)
+          tar -czf KJB-LLM-ios-simulator.tar.gz -C "$(dirname "$APP")" "$(basename "$APP")"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -78,3 +85,4 @@ jobs:
           tag_name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
           files: |
             mobile/*.ipa
+            mobile/*.tar.gz
