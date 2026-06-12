@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write          # attach release assets on tag builds
   pages: write
   id-token: write
 
@@ -54,6 +54,42 @@ jobs:
         with:
           name: web-build
           path: mobile/dist
+
+      # ChromeOS gets the same web build plus ChromeOS install instructions
+      - name: Package ChromeOS zip
+        run: |
+          rm -rf chromeos-stage
+          mkdir -p chromeos-stage
+          cp -r dist/. chromeos-stage/
+          printf '%s\n' \
+            '# KJB-LLM — ChromeOS' \
+            '' \
+            '## Easiest: install the web app (PWA)' \
+            '' \
+            '1. Open https://socrtwo.github.io/kjb-llm-King-James-Bible-Large-Language-Model-/ in Chrome on your Chromebook.' \
+            '2. Click the install icon in the address bar ("Install app").' \
+            '3. The app appears in the ChromeOS launcher — pin it to the shelf if you like.' \
+            '' \
+            '## Or: run the Linux desktop build' \
+            '' \
+            'If your Chromebook has Linux (Crostini) enabled (Settings -> About ChromeOS -> Linux development environment):' \
+            '' \
+            '1. Download the .deb from this same release page and double-click it in the Files app to install.' \
+            '2. Or download the .AppImage, then in the Linux terminal run: chmod +x KJB-LLM-*.AppImage && ./KJB-LLM-*.AppImage' \
+            '' \
+            '## Offline / self-hosted' \
+            '' \
+            '- This zip contains the same static web build the hosted page serves. Host the folder on any static web server.' \
+            > chromeos-stage/INSTALL.md
+          ( cd chromeos-stage && zip -qr ../KJB-LLM-chromeos.zip . )
+          ls -la KJB-LLM-chromeos.zip
+
+      - name: Attach ChromeOS zip to GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            mobile/KJB-LLM-chromeos.zip
 
   deploy-pages:
     needs: web
