@@ -1,0 +1,86 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Build the ChromeOS deliverable as an installable PWA (Expo Web export).
+#
+# ChromeOS treats Progressive Web Apps as first-class apps, so the same Expo
+# web bundle that powers the Web target is packaged here as a ChromeOS bundle
+# (with an install note) and attached to the GitHub release on tag push — the
+# same pattern the desktop / android / ios legs use.
+# ─────────────────────────────────────────────────────────────────────────────
+name: Build – ChromeOS
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  WORKING_DIR: mobile
+
+jobs:
+  chromeos:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure API URL
+        run: |
+          echo "EXPO_PUBLIC_API_URL=${{ vars.API_URL || 'https://api.kjbllm.app' }}" >> $GITHUB_ENV
+
+      - name: Export static web build
+        run: npx expo export --platform web
+
+      - name: Package ChromeOS PWA bundle
+        run: |
+          rm -rf chromeos-stage && mkdir -p chromeos-stage/app
+          cp -r dist/* chromeos-stage/app/
+          {
+            echo "KJB-LLM - ChromeOS"
+            echo ""
+            echo "ChromeOS treats Progressive Web Apps as first-class apps;"
+            echo "no APK, extension, or signing is required."
+            echo ""
+            echo "Install (recommended):"
+            echo "  1. Open the hosted app in Chrome on your Chromebook."
+            echo "  2. Click the install icon in the address bar (or menu ->"
+            echo "     Install KJB-LLM)."
+            echo "  3. The app appears in your launcher and works offline."
+            echo ""
+            echo "Run from this bundle (offline):"
+            echo "  1. Unzip into Files -> My files."
+            echo "  2. Open app/index.html in Chrome."
+            echo ""
+            echo "Chromebooks with Play Store support can alternatively sideload"
+            echo "the Android APK / AAB from this same release."
+          } > chromeos-stage/INSTALL-CHROMEOS.txt
+          ( cd chromeos-stage && zip -qr ../kjb-llm-chromeos.zip . )
+          ls -la kjb-llm-chromeos.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chromeos-build
+          path: mobile/kjb-llm-chromeos.zip
+
+      - name: Attach to GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            mobile/kjb-llm-chromeos.zip
