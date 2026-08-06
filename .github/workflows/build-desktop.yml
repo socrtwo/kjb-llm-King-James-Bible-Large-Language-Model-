@@ -7,6 +7,11 @@ on:
   push:
     tags: ["v*"]
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to attach artifacts to (e.g. v0.1.2). Leave empty to just build without releasing."
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -60,9 +65,7 @@ jobs:
 
       - name: Build Electron app
         working-directory: desktop
-        run: npx electron-builder --${{ matrix.platform }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --${{ matrix.platform }} --publish never
 
       - name: Azure login (OIDC, no stored secret)
         if: runner.os == 'Windows' && vars.AZURE_TENANT_ID != ''
@@ -99,9 +102,11 @@ jobs:
             desktop/dist-electron/*.rpm
 
       - name: Attach to GitHub release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.release_tag != ''
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.release_tag || github.ref_name }}
+          fail_on_unmatched_files: false
           files: |
             desktop/dist-electron/*.exe
             desktop/dist-electron/*.msi
@@ -109,3 +114,4 @@ jobs:
             desktop/dist-electron/*.zip
             desktop/dist-electron/*.AppImage
             desktop/dist-electron/*.deb
+            desktop/dist-electron/*.rpm

@@ -16,6 +16,10 @@ on:
         options:
           - preview
           - production
+      release_tag:
+        description: "Release tag to attach APK to (e.g. v0.1.2). Leave empty to just build."
+        required: false
+        type: string
 
 permissions:
   contents: write          # needed to upload release assets
@@ -53,6 +57,24 @@ jobs:
         run: |
           echo "EXPO_PUBLIC_API_URL=${{ vars.API_URL || 'https://api.kjbllm.app' }}" >> $GITHUB_ENV
 
+      - name: Initialize EAS project
+        run: eas init --non-interactive --force
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Persist EAS projectId back to repo
+        if: startsWith(github.ref, 'refs/heads/')
+        run: |
+          if ! git diff --quiet app.json 2>/dev/null; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add app.json
+            git commit -m "chore: persist EAS projectId to app.json [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "app.json unchanged – projectId already set"
+          fi
+
       - name: Build Android APK (preview)
         if: ${{ github.event.inputs.profile != 'production' }}
         run: eas build --platform android --profile preview --non-interactive --local
@@ -74,9 +96,11 @@ jobs:
             mobile/*.aab
 
       - name: Attach to GitHub release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/v') || inputs.release_tag != ''
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.release_tag || github.ref_name }}
+          fail_on_unmatched_files: false
           files: |
             mobile/*.apk
             mobile/*.aab
