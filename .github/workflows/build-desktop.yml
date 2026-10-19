@@ -44,7 +44,7 @@ jobs:
       # ── Build the Expo Web bundle first ──────────────────────────────────
       - name: Install mobile dependencies
         working-directory: mobile
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Export Expo web bundle
         working-directory: mobile
