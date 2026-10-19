@@ -9,7 +9,9 @@
     "splash": {
       "backgroundColor": "#1a1a2e"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.kjbllm.app"
@@ -24,7 +26,11 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "apiUrl": "http://localhost:8000"
-    }
+      "apiUrl": "http://localhost:8000",
+      "eas": {
+        "projectId": "a4a60c6b-8e21-4178-b881-35290fd464f0"
+      }
+    },
+    "owner": "socrtwo"
   }
 }

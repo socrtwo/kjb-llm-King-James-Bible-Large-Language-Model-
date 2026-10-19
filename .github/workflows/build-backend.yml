@@ -15,7 +15,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}/api
+  IMAGE_NAME: socrtwo/kjb-llm/api
 
 jobs:
   docker:
