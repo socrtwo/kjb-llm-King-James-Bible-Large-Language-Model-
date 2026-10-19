@@ -142,7 +142,7 @@ Every platform has a dedicated GitHub Actions workflow under `.github/workflows/
 | **CI Tests** | `ci-tests.yml` | Push / PR to `main` | pytest results |
 | **Android** | `build-android.yml` | Tag `v*` or manual | `.apk` / `.aab` |
 | **iOS** | `build-ios.yml` | Tag `v*` or manual | `.ipa` |
-| **Web** | `build-web.yml` | Push to `main` or tag | GitHub Pages |
+| **Web** | `build-web.yml` | Push to `main` or tag (Pages deploy from `main`) | GitHub Pages / tag build artifact |
 | **Desktop** | `build-desktop.yml` | Tag `v*` or manual | `.AppImage`, `.deb`, `.dmg`, `.exe` |
 | **Backend** | `build-backend.yml` | Push to `main` or tag | Docker image (GHCR) |
 
